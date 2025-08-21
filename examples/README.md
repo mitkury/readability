@@ -84,6 +84,29 @@ node content-analyzer.js <input-file>
 - Generates content statistics
 - Exports analysis results
 
+### 4. Markdown Converter (`extract-to-markdown.js`)
+
+Extract content from URLs and convert to Markdown format with YAML front matter.
+
+**Usage:**
+```bash
+node extract-to-markdown.js <URL> [output-filename] [options]
+```
+
+**Options:**
+- `--no-metadata` - Skip YAML front matter and metadata section
+- `--no-url` - Skip original URL in metadata
+- `--no-date` - Skip extraction date in metadata
+- `--title "Title"` - Use custom title instead of extracted title
+- `--author "Author"` - Use custom author instead of extracted author
+
+**Features:**
+- Converts HTML content to clean Markdown
+- Adds YAML front matter with metadata
+- Preserves images, links, tables, and code blocks
+- Handles complex formatting and structure
+- Configurable output options
+
 ## Output Directory
 
 All extracted content is saved to the `output/` directory, which is automatically created and excluded from version control.
@@ -92,12 +115,14 @@ All extracted content is saved to the `output/` directory, which is automaticall
 
 ```
 examples/
-├── package.json          # Dependencies and scripts
-├── extract-url.js        # URL content extractor
-├── batch-process.js      # Batch URL processor
-├── content-analyzer.js   # Content analysis tool
-├── output/               # Generated content files (gitignored)
-└── README.md            # This file
+├── package.json              # Dependencies and scripts
+├── extract-url.js            # URL content extractor
+├── batch-process.js          # Batch URL processor
+├── content-analyzer.js       # Content analysis tool
+├── extract-to-markdown.js    # Markdown converter
+├── sample-urls.txt           # Sample URLs for testing
+├── output/                   # Generated content files (gitignored)
+└── README.md                # This file
 ```
 
 ## Dependencies
@@ -105,6 +130,7 @@ examples/
 - `@mozilla/readability`: The main Readability library
 - `jsdom`: DOM implementation for Node.js
 - `node-fetch`: HTTP client for fetching web content
+- `turndown`: HTML to Markdown converter
 
 ## Error Handling
 
